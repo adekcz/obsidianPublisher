@@ -1,3 +1,8 @@
+/* center all headings to middle */
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
 /* easy to read paragraphs centered to middle, block aligned, margins at the sides */
 p {
     font-size: 1em;
