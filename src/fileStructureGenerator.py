@@ -1,6 +1,5 @@
 import os
 import utils
-import sys
 
 #takes folder path and generates html file containing all the files in the folder recursively
 def generate_html_file(path, file_name):
