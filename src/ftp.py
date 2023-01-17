@@ -37,7 +37,7 @@ def upload_files(root_directory):
             ftp.mkd(dir_to_create)
 
         for file in files:
-            if file.endswith(".html"):
+            if file.endswith(".html") or file.endswith(".css"):
                 file_path = os.path.join(dir, file)
                 file_name = utils.get_file_name(file_path)
                 if file_name in ftp.nlst():
