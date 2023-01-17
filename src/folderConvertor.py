@@ -1,5 +1,6 @@
 import utils
 import os
+import re
 
 #recursively go through all the files in the directory
 # and run external command on each file
@@ -10,8 +11,9 @@ def run_command_on_files(directory, command, parameters, suffix):
         for file in files:
             if(file.endswith(".md")):
                 file_path = os.path.join(root, file)
-                css_directory = "/notes/"
-                css_part =  " --css=" + utils.escape_path(css_directory + "styles.css")
+                css_directory = utils.remove_prefix(root , directory +  os.sep)
+                css_directory_final = "/".join([".." for x in css_directory.split("\\")]) + "/"
+                css_part =  " --css=" + utils.escape_path(css_directory_final + "styles.css")
                 convert_command = command + " " + utils.escape_path(file_path) + " " + parameters + " " + utils.escape_path(file_path+suffix) + css_part
                 print("Executing: " + convert_command)
                 os.system(convert_command)
