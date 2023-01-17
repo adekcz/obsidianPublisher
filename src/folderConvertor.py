@@ -15,4 +15,13 @@ def run_command_on_files(directory, command, parameters, suffix):
                 convert_command = command + " " + utils.escape_path(file_path) + " " + parameters + " " + utils.escape_path(file_path+suffix) + css_part
                 print("Executing: " + convert_command)
                 os.system(convert_command)
-            
+
+
+# delete all the files in the directory ending with suffix
+def delete_files(directory, suffix):
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if(file.endswith(suffix)):
+                file_path = os.path.join(root, file)
+                print("Deleting: " + file_path)
+                os.remove(file_path)
