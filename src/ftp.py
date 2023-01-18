@@ -2,15 +2,7 @@
 import utils
 import os
 from ftplib import FTP
-
-
-def load_credentials():
-    with open("src/resources/credentials.txt") as file:
-        lines = file.readlines()
-        username = lines[0].strip()
-        password = lines[1].strip()
-        ftp = lines[2].strip()
-    return username, password, ftp
+from entities.credentials import Credentials
 
 #upload file to ftp
 def upload_file(file_path, file_name, connection):
@@ -22,7 +14,7 @@ def upload_file(file_path, file_name, connection):
 
 #go through all the files in the directory and upload them to ftp
 def upload_files(root_directory):
-    username, password, ftp_path = load_credentials()
+    username, password, ftp_path = Credentials().get_ftp_credentials()
     ftp = FTP(ftp_path)
     ftp.login(username, password)
     for dir, dirs, files in os.walk(root_directory):
