@@ -20,7 +20,7 @@ def copy_file(source, destination):
         file.write(data)
 
 #get path path of running script
-def get_script_path():
+def get_runtime_script_path():
     return os.path.dirname(os.path.realpath(__file__))
 
 def escape_path(file_path):
