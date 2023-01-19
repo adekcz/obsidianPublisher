@@ -13,7 +13,7 @@ def upload_file(file_path, file_name, connection):
     
 
 #go through all the files in the directory and upload them to ftp
-def upload_files(root_directory):
+def upload_files(root_directory, suffixes):
     username, password, ftp_path = Credentials().get_ftp_credentials()
     ftp = FTP(ftp_path)
     ftp.login(username, password)
@@ -29,7 +29,7 @@ def upload_files(root_directory):
             ftp.mkd(dir_to_create)
 
         for file in files:
-            if file.endswith(".html") or file.endswith(".css"):
+            if any(file.endswith(suffix) for suffix in suffixes):
                 file_path = os.path.join(dir, file)
                 file_name = utils.get_file_name(file_path)
                 if file_name in ftp.nlst():

@@ -12,6 +12,11 @@ def remove_prefix(text, prefix):
 def get_file_name(file_path):
     return file_path.split(os.sep)[-1]
 
+#create file structure
+def create_file_structure(file_path):
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+
 #copy file
 def copy_file(source, destination):
     with open(source, "rb") as file:

@@ -11,3 +11,10 @@ p {
     margin: 0em 10em;
     letter-spacing: .03em;
 }
+
+ul .podcast {
+    list-style-image: url("microphone_small.png");
+}
+ul .book {
+    background: #fff url("book.png") 0 3px no-repeat;
+}
