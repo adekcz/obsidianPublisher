@@ -10,7 +10,7 @@ def generate_html_file(path, file_name):
                 file_path = os.path.join(root, file)
                 file_path = pathUtils.remove_prefix(file_path, path)
                 file_path = file_path.replace("\\", "/")
-                css_class = "podcast" if file_path.startswith("Podcasts") else ""
+                css_class = "podcast" if file_path.startswith("Podcasts") else "book" if file_path.startswith("Books") else ""
                 html += "<li class=\"" + css_class + "\"><a href=\"./" + file_path + "\">" + file_path + "</a><br/></li>\n"
     html += "</ul>\n"
 

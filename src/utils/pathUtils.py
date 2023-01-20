@@ -13,8 +13,8 @@ def get_file_name(file_path):
     return file_path.split(os.sep)[-1]
 
 #get path path of running script
-def get_runtime_script_path():
-    return os.path.dirname(os.path.realpath(__file__))
+def get_runtime_script_path(file):
+    return os.path.dirname(os.path.realpath(file))
 
 def escape_path(file_path):
     file_path = "\"" + file_path + "\""

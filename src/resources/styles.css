@@ -16,5 +16,5 @@ ul .podcast {
     list-style-image: url("microphone_small.png");
 }
 ul .book {
-    background: #fff url("book.png") 0 3px no-repeat;
+    list-style-image: url("book_small.png");
 }
