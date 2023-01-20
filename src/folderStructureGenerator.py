@@ -1,5 +1,5 @@
 import os
-import utils
+import utils.pathUtils as pathUtils
 
 #takes folder path and generates html file containing all the files in the folder recursively
 def generate_html_file(path, file_name):
@@ -8,9 +8,9 @@ def generate_html_file(path, file_name):
         for file in files:
             if(file.endswith(".html")):
                 file_path = os.path.join(root, file)
-                file_path = utils.remove_prefix(file_path, path)
+                file_path = pathUtils.remove_prefix(file_path, path)
                 file_path = file_path.replace("\\", "/")
-                css_class = "podcast" if file_path.startswith("Podcast") else ""
+                css_class = "podcast" if file_path.startswith("Podcasts") else ""
                 html += "<li class=\"" + css_class + "\"><a href=\"./" + file_path + "\">" + file_path + "</a><br/></li>\n"
     html += "</ul>\n"
 

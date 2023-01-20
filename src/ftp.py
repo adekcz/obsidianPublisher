@@ -1,5 +1,5 @@
 #load password and username from file
-import utils
+import utils.pathUtils as pathUtils
 import os
 from ftplib import FTP
 from entities.credentials import Credentials
@@ -18,7 +18,7 @@ def upload_files(root_directory, suffixes):
     ftp = FTP(ftp_path)
     ftp.login(username, password)
     for dir, dirs, files in os.walk(root_directory):
-        current_dir = "/" + utils.remove_prefix(dir, root_directory)
+        current_dir = "/" + pathUtils.remove_prefix(dir, root_directory)
         current_dir = current_dir.replace("\\", "/")
         ftp.cwd(current_dir)
 
@@ -31,7 +31,7 @@ def upload_files(root_directory, suffixes):
         for file in files:
             if any(file.endswith(suffix) for suffix in suffixes):
                 file_path = os.path.join(dir, file)
-                file_name = utils.get_file_name(file_path)
+                file_name = pathUtils.get_file_name(file_path)
                 if file_name in ftp.nlst():
                     print("deleting file: " + file_name)
                     ftp.delete(file_name)
