@@ -23,7 +23,7 @@ def run_command_on_files(directory, suffix):
                 css_part =  " --css=" + pathUtils.escape_path(css_directory_final + "styles.css")
                 #pandoc file --template temp_file to apply template
                 #pandoc -s -t .... to convert to html
-                convert_command += " pandoc " +  pathUtils.escape_path(file_path)  + " --template" + " " +temp_file + " | pandoc -s -t html --metadata title=\"" + file.split(".")[0] + "\" -o " + pathUtils.escape_path(file_path+suffix) + css_part
+                convert_command += " pandoc " +  pathUtils.escape_path(file_path)  + " --template" + " " +temp_file + " | pandoc  -f markdown+hard_line_breaks+autolink_bare_uris --wrap=preserve  -s -t html --metadata pagetitle=\"" + file.split(".")[0] + "\" -o " + pathUtils.escape_path(file_path+suffix) + css_part
                 print("Executing: " + convert_command)
                 run(convert_command)
 
