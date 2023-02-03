@@ -18,3 +18,9 @@ ul .podcast {
 ul .book {
     list-style-image: url("book_small.png");
 }
+
+/* li is not indented  */
+.header_info ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
